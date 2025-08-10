@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+input,
+button {
+    outline: none;
+}
+
+@theme {
+    --color-main: #D84040;
+
+    --color-main-dark: #2C2C2C;
+
+    --color-overlay-dark: #333333;
+    --color-overlay-active: #33333390;
+
+    --color-overlay-overlay: #404040;
+    --color-overlay-overlay-active: #444;
+
+    --color-text-overlay: #999;
+}
