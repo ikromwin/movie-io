@@ -40,19 +40,21 @@ function MovieCard({ details }) {
                     ref={imgRef}
                     className="relative w-[90px] flex items-center justify-center h-[140px] scale-[1.1] transition-all duration-600 ease group-hover:scale-[1.20] rounded-lg bg-overlay-overlay overflow-hidden"
                 >
-                    {!imgLoaded && <Loader className="absolute animate-spin" color="#999999" strokeWidth={2.25} />}
 
                     {hasImage ? (
                         isVisible ? (
-                            <img
-                                className={`w-full h-full rounded-lg transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"
-                                    }`}
-                                src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-                                alt={details.title}
-                                width={90}
-                                onLoad={() => setImgLoaded(true)}
-                                onError={() => setImgLoaded(true)}
-                            />
+                            <>
+                                {!imgLoaded && <Loader className="absolute animate-spin" color="#999999" strokeWidth={2.25} />}
+                                <img
+                                    className={`w-full h-full rounded-lg transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"
+                                        }`}
+                                    src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+                                    alt={details.title}
+                                    width={90}
+                                    onLoad={() => setImgLoaded(true)}
+                                    onError={() => setImgLoaded(true)}
+                                />
+                            </>
                         ) : (
                             <Loader className="animate-spin" color="#999999" strokeWidth={2.25} />
                         )
@@ -63,12 +65,12 @@ function MovieCard({ details }) {
             </div>
 
             <div className="ml-10">
-                <NavLink className="flex pr-6 text-xl font-[800] text-[#ccc] transition-all duration-400 ease hover:text-main">
-                    <span>{details.title}</span>
+                <NavLink to={`/movie/${details.id}`} className="flex pr-6 text-xl font-[800] text-[#ccc] transition-all duration-400 ease hover:text-main">
+                    <span>{details.title || details.name}</span>
 
                     <Pointer className="transition-all mt-2 duration-800 ease opacity-0 group-hover:opacity-100 ml-1" color="#fff" strokeWidth={1.6} size={16} />
                 </NavLink>
-                <p className="text-[#797979] font-[500] text-[14px] mt-5">Realized: {details.release_date} / {details.adult}</p>
+                <p className="text-[#797979] font-[500] text-[14px] mt-5">Realized: {details.release_date}</p>
 
 
             </div>

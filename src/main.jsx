@@ -7,17 +7,10 @@ import './index.css'
 
 
 
-
-// CONTEXT
-import { SearchProvider } from "./contexts/SearchContext.jsx";
-
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <SearchProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </SearchProvider>
   </StrictMode>,
 )

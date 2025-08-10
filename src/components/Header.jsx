@@ -3,14 +3,23 @@ import { useEffect, useState } from "react";
 
 // THIRD PARTY
 import { Search, Star, Undo2 } from "lucide-react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 
 // COMPONENTS
 
 
 
 function Header() {
-    
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (query.trim() === "") return;
+        navigate(`/search?query=${encodeURIComponent(query)}`);
+        setQuery("");
+    };
+
     const [backButton, setBackButton] = useState(false)
     const location = useLocation()
 
@@ -20,7 +29,7 @@ function Header() {
 
         else setBackButton(false)
     })
-    
+    // https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1
 
     return (
         <div className="flex items-center gap-2">
@@ -31,11 +40,15 @@ function Header() {
                 </NavLink>
             }
 
-            <form className="w-full flex bg-overlay-dark rounded-full">
+            <form onSubmit={handleSubmit} className="w-full flex bg-overlay-dark rounded-full">
                 <input
                     type="search"
+                    name="query"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                     className="w-full pl-6 text-[16px] font-[600] py-3 text-white placeholder-[#666] "
                     placeholder="Searching..."
+                    autoComplete="off"
                 />
 
                 <button type="submit" className="bg-overlay-overlay px-2 cursor-pointer rounded-full m-2 active:scale-[0.96] hover:bg-overlay-overlay-active hover:transition-colors">

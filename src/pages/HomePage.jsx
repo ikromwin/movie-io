@@ -16,12 +16,11 @@ function HomePage() {
             setLoading(true);
             try {
                 const res = await fetch(
-                    `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY
-                    }&language=en-US&page=${page}&include_adult=false`
+                    `https://api.themoviedb.org/3/trending/all/day?api_key=${import.meta.env.VITE_TMDB_API_KEY
+                    }&language=en-US&page=${page}&adult=false`
                 );
                 const data = await res.json();
                 
-                console.log(data);
                 
                 setMovies(data.results);
                 setTotalPages(data.total_pages);
@@ -36,7 +35,7 @@ function HomePage() {
     }, [page]);
 
     return (
-        <div className="relative">
+        <>
             <div className="relative grid gap-6 z-2">
                 {loading
                     ? Array.from({ length: 8 }).map((_, i) => <Skeleton key={i} />)
@@ -44,13 +43,12 @@ function HomePage() {
                 }
             </div>
 
-            {/* Pagination controls */}
             <Pagination
                 page={page}
                 totalPages={totalPages}
                 onPageChange={setPage}
             />
-        </div>
+        </>
     );
 }
 
