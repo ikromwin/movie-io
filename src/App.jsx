@@ -31,8 +31,7 @@ function App() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
-  console.log(location.pathname);
-
+  
   const handleSearch = (query) => {
     setSearchQuery(query);
     navigate(`/search?query=${encodeURIComponent(query)}`);

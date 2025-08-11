@@ -1,67 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-
 // THIRD PARTY
 import { NavLink } from "react-router-dom"
-import { ImageOff, Loader, Pointer, Star } from "lucide-react"
+import { ImageOff, Pointer, Star } from "lucide-react"
+import ImageLoad from "./ImageLoad";
 
 function MovieCard({ details }) {
-    const [imgLoaded, setImgLoaded] = useState(false);
-    const hasImage = Boolean(details.poster_path);
-    const [isVisible, setIsVisible] = useState(false);
-    const imgRef = useRef(null);
-
-
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsVisible(true);
-                        observer.disconnect();
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        if (imgRef.current) {
-            observer.observe(imgRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
 
 
     return (
         <div className="relative group flex items-center bg-overlay-dark rounded-4xl">
             <div className="ml-[5px]">
-                <div
-                    ref={imgRef}
-                    className="relative w-[90px] flex items-center justify-center h-[140px] scale-[1.1] transition-all duration-600 ease group-hover:scale-[1.20] rounded-lg bg-overlay-overlay overflow-hidden"
-                >
-
-                    {hasImage ? (
-                        isVisible ? (
-                            <>
-                                {!imgLoaded && <Loader className="absolute animate-spin" color="#999999" strokeWidth={2.25} />}
-                                <img
-                                    className={`w-full h-full rounded-lg transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"
-                                        }`}
-                                    src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-                                    alt={details.title}
-                                    width={90}
-                                    onLoad={() => setImgLoaded(true)}
-                                    onError={() => setImgLoaded(true)}
-                                />
-                            </>
-                        ) : (
-                            <Loader className="animate-spin" color="#999999" strokeWidth={2.25} />
-                        )
-                    ) : (
+                <div className="relative w-[90px] h-[140px] flex items-center justify-center scale-[1.1] rounded-lg bg-overlay-overlay overflow-hidden">
+                    {details.poster_path ?
+                        <ImageLoad width={90} height={140} imgSrc={`https://image.tmdb.org/t/p/w185${details.poster_path}`} imgTitle={details.title || details.name}></ImageLoad>
+                        :
                         <ImageOff color="#999999" strokeWidth={2.25} />
-                    )}
+                    }
                 </div>
+
             </div>
 
             <div className="ml-10">
