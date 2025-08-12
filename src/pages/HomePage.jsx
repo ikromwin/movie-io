@@ -19,8 +19,8 @@ function HomePage() {
                     `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=${page}`
                 );
                 const data = await res.json();
-                
-                
+
+
                 setMovies(data.results);
                 setTotalPages(data.total_pages);
             } catch (error) {
@@ -41,6 +41,7 @@ function HomePage() {
                     : movies.map((movie) => <MovieCard key={movie.id} details={movie} />)
                 }
             </div>
+
 
             <Pagination
                 page={page}

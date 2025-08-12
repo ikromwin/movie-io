@@ -19,13 +19,13 @@ function MovieCard({ details }) {
 
             </div>
 
-            <div className="ml-10">
+            <div className=" xl:ml-10 sm:ml-7 ml-7">
                 <NavLink to={`/movie/${details.id}`} className="flex pr-6 text-xl font-[800] text-[#ccc] transition-all duration-400 ease hover:text-main">
                     <span>{details.title || details.name}</span>
 
                     <Pointer className="transition-all mt-2 duration-800 ease opacity-0 group-hover:opacity-100 ml-1" color="#fff" strokeWidth={1.6} size={16} />
                 </NavLink>
-                <p className="text-[#797979] font-[500] text-[14px] mt-5">Realized: {details.release_date}</p>
+                <p className="text-[#797979] font-[500] text-[14px] mt-5"><span className="hidden sm:inline xl:inline">Realized:</span> {details.release_date}</p>
 
 
             </div>

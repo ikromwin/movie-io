@@ -10,8 +10,8 @@ function Skeleton() {
             </div>
 
             <div className="ml-10">
-                <div className="flex bg-overlay-overlay w-[200px] p-3 rounded-lg"></div>
-                <p className="flex bg-overlay-overlay w-[100px] p-3 rounded-lg mt-5"></p>
+                <div className="flex bg-overlay-overlay xl:w-[200px] sm:w-[120px] w-[120px] p-3 rounded-lg"></div>
+                <p className="flex bg-overlay-overlay xl:w-[100px] sm:w-[80px] w-[80px] p-3 rounded-lg mt-5"></p>
             </div>
 
             <div className="absolute bottom-4 right-4">
