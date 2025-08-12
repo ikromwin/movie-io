@@ -40,7 +40,7 @@ export default function ImageLoad({ imgSrc, imgTitle, width, height }) {
     return (
         <div
             ref={imgRef}
-            className={`relative w-[${width || 90}px] h-[${height || 140}px] flex items-center justify-center  scale-[1.1] transition-all duration-600 ease group-hover:scale-[1.20] rounded-lg bg-overlay-overlay overflow-hidden`}
+            className={`relative w-[${width || 90}px] h-[${height || 140}px] flex items-center justify-center  scale-[1.1] transition-all duration-600 ease group-hover:scale-[1.20] rounded-lg bg-overlay-overlay`}
         >
 
             {

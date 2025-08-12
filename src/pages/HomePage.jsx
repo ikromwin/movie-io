@@ -16,8 +16,7 @@ function HomePage() {
             setLoading(true);
             try {
                 const res = await fetch(
-                    `https://api.themoviedb.org/3/trending/all/day?api_key=${import.meta.env.VITE_TMDB_API_KEY
-                    }&language=en-US&page=${page}&adult=false`
+                    `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=${page}`
                 );
                 const data = await res.json();
                 

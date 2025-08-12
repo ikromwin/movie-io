@@ -31,7 +31,7 @@ function App() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
-  
+
   const handleSearch = (query) => {
     setSearchQuery(query);
     navigate(`/search?query=${encodeURIComponent(query)}`);
@@ -67,7 +67,7 @@ function App() {
 
           <div className='flex justify-center items-center gap-2'>
             <Flame color="#DD5C22" strokeWidth={1.5} fill='#FFB02E' size={25} />
-            <h1 className='text-2xl text-main font-bold'>Recom Movies</h1>
+            <h1 className='text-2xl text-main font-bold'>Movie I/O</h1>
           </div>
 
 

@@ -29,7 +29,6 @@ function Header() {
 
         else setBackButton(false)
     })
-    // https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1
 
     return (
         <div className="flex items-center gap-2">
