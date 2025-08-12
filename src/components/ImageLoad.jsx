@@ -40,7 +40,7 @@ export default function ImageLoad({ imgSrc, imgTitle, width, height }) {
     return (
         <div
             ref={imgRef}
-            className={`relative w-[${width || 90}px] h-[${height || 140}px] flex items-center justify-center  scale-[1.1] transition-all duration-600 ease group-hover:scale-[1.20] rounded-lg bg-overlay-overlay`}
+            className={`relative w-[${width || "auto"}] h-[${height || "auto"}] flex items-center justify-center  scale-[1.1] transition-all duration-600 ease group-hover:scale-[1.20] rounded-lg bg-overlay-overlay`}
         >
 
             {
@@ -48,7 +48,7 @@ export default function ImageLoad({ imgSrc, imgTitle, width, height }) {
                     <>
                         {!imgLoaded && <Loader className="absolute animate-spin" color="#999999" strokeWidth={2.25} />}
                         <img
-                            className={`w-full h-full rounded-lg transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+                            className={`w-full h-full rounded-lg transition-opacity duration-400 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
                             src={`https://image.tmdb.org/t/p/w500${imgSrc}`}
                             alt={imgTitle}
                             width={width}

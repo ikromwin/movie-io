@@ -46,7 +46,7 @@ function Header() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className="w-full pl-6 text-[16px] font-[600] py-3 text-white placeholder-[#666] "
-                    placeholder="Searching..."
+                    placeholder="Search..."
                     autoComplete="off"
                 />
 
