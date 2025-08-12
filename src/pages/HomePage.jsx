@@ -5,6 +5,7 @@ import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
 import Skeleton from "../components/Skeleton";
 
+import AdComponent from "../components/AdComponent";
 function HomePage() {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
@@ -35,6 +36,8 @@ function HomePage() {
 
     return (
         <>
+
+            <AdComponent slot="970x90"></AdComponent>
             <div className="relative grid gap-6 z-2">
                 {loading
                     ? Array.from({ length: 8 }).map((_, i) => <Skeleton key={i} />)
