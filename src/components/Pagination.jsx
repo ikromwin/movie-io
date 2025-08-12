@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, MoveUp } from "lucide-react"
+import { ChevronLeft, ChevronRight, Circle, MoveUp } from "lucide-react"
 import { useEffect, useState } from "react";
 
 function Pagination({ page, totalPages, onPageChange }) {
@@ -54,13 +54,15 @@ function Pagination({ page, totalPages, onPageChange }) {
 
 
             <div className="block sm:block xl:hidden fixed left-0 w-full z-10 bottom-0 p-2" >
-                <div className="flex justify-between text-white items-center bg-[#33333390] backdrop-blur p-2 rounded-full gap-2">
-                    {page !== 1 ? <button
+                <div className="flex justify-between text-white items-center bg-white/1 border border-white/10 backdrop-blur-[4px] backdrop-brightness-110 shadow-lg shadow-black/10 p-2 rounded-full gap-2">
+                    <button
                         onClick={() => onPageChange(Math.max(page - 1, 1))}
                         className={btnMobileClass}
+                        disabled={page === 1}
                     >
                         <ChevronLeft color="#999999" strokeWidth={2.25} size={18} />
-                    </button> : <span></span>}
+                    </button>
+
                     {showScrollTop &&
                         <>
                             <span className="opacity-50 w-[5px] h-4 bg-white"></span>
@@ -74,6 +76,7 @@ function Pagination({ page, totalPages, onPageChange }) {
                             <span className="opacity-50 w-[5px] h-4 bg-white"></span>
                         </>
                     }
+
                     <button
                         onClick={() => onPageChange(Math.max(page + 1, 1))}
                         className={btnMobileClass}

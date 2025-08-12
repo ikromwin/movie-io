@@ -68,8 +68,6 @@ export default function MovieDetails() {
     }
 
 
-    console.log(movie);
-
 
     const director = credits?.crew?.find((person) => person.job === "Director");
     const writer = credits?.crew?.find(
@@ -107,7 +105,7 @@ export default function MovieDetails() {
                 <img
                     src={`https://image.tmdb.org/t/p/w185${movie.backdrop_path}`}
                     alt="bg"
-                    className={`transition-opacity duration-500 rounded-b-[50%] pointer-events-none h-[500px] object-cover select-none brightness-100 blur-2xl w-full ${movie.backdrop_path ? "opacity-8" : "opacity-0"}`}
+                    className={`transition-opacity duration-500 rounded-b-[50%] pointer-events-none h-[500px] object-cover select-none brightness-100 blur-3xl w-full ${movie.backdrop_path ? "opacity-12" : "opacity-0"}`}
                 />
             </div>
 

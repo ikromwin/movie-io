@@ -97,7 +97,7 @@ function App() {
           </div>
 
 
-          <footer className='mt-12 pb-10'>
+          <footer className='mt-12 pb-10 xl:pb-10 pb-26 sm:pb-26'>
             <p className='text-center text-[#666]'>Made with ♡ • 2025</p>
           </footer>
         </div>
