@@ -5,6 +5,7 @@ function Pagination({ page, totalPages, onPageChange }) {
     const [showScrollTop, setShowScrollTop] = useState(false);
 
     const btnClass = "border border-overlay-overlay transition-colors duration-400 ease hover:bg-overlay-overlay p-6 rounded-full cursor-pointer active:scale-[0.96]";
+    const btnMobileClass = "border border-[#555] active:bg-overlay-overlay hover:bg-overlay-overlay w-full p-5 flex items-center justify-center rounded-full cursor-pointer active:scale-[0.95]";
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,37 +19,70 @@ function Pagination({ page, totalPages, onPageChange }) {
     };
 
     return (
-        <div className="sticky bottom-20">
-            <div className="flex justify-between ml-[-55%]  mr-[-55%]">
-                {page !== 1 ? <button
-                    onClick={() => onPageChange(Math.max(page - 1, 1))}
-                    className={btnClass}
-                >
-                    <ChevronLeft color="#999999" strokeWidth={2.25} size={18} />
-                </button> : <span></span>}
+        <>
+            <div className="hidden xl:block sm:hidden sticky bottom-20">
+                <div className="flex justify-between ml-[-55%]  mr-[-55%]">
+                    {page !== 1 ? <button
+                        onClick={() => onPageChange(Math.max(page - 1, 1))}
+                        className={btnClass}
+                    >
+                        <ChevronLeft color="#999999" strokeWidth={2.25} size={18} />
+                    </button> : <span></span>}
 
 
 
-                <div className="relative">
-                    {showScrollTop &&
+                    <div className="relative">
+                        {showScrollTop &&
+                            <button
+                                onClick={scrollToTop}
+                                className={`${btnClass} absolute bottom-20`}
+                                title="Back to Top"
+                            >
+                                <MoveUp color="#999999" strokeWidth={2.25} size={18} />
+                            </button>
+                        }
+
                         <button
-                            onClick={scrollToTop}
-                            className={`${btnClass} absolute bottom-20`}
-                            title="Back to Top"
+                            onClick={() => onPageChange(Math.max(page + 1, 1))}
+                            className={btnClass}
                         >
-                            <MoveUp color="#999999" strokeWidth={2.25} size={18} />
+                            <ChevronRight color="#999999" strokeWidth={2.25} size={18} />
                         </button>
-                    }
+                    </div>
+                </div>
+            </div>
 
+
+            <div className="block sm:block xl:hidden fixed left-0 w-full z-10 bottom-0 p-2" >
+                <div className="flex justify-between text-white items-center bg-[#33333390] backdrop-blur p-2 rounded-full gap-2">
+                    {page !== 1 ? <button
+                        onClick={() => onPageChange(Math.max(page - 1, 1))}
+                        className={btnMobileClass}
+                    >
+                        <ChevronLeft color="#999999" strokeWidth={2.25} size={18} />
+                    </button> : <span></span>}
+                    {showScrollTop &&
+                        <>
+                            <span className="opacity-50 w-[5px] h-4 bg-white"></span>
+                            <button
+                                onClick={scrollToTop}
+                                className={`${btnMobileClass}`}
+                                title="Back to Top"
+                            >
+                                <MoveUp color="#999999" strokeWidth={2.25} size={18} />
+                            </button>
+                            <span className="opacity-50 w-[5px] h-4 bg-white"></span>
+                        </>
+                    }
                     <button
                         onClick={() => onPageChange(Math.max(page + 1, 1))}
-                        className={btnClass}
+                        className={btnMobileClass}
                     >
                         <ChevronRight color="#999999" strokeWidth={2.25} size={18} />
                     </button>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
