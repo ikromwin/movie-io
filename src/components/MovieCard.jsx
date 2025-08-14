@@ -1,9 +1,9 @@
 // THIRD PARTY
 import { NavLink } from "react-router-dom"
-import { ImageOff, Pointer, Star } from "lucide-react"
+import { Bookmark, BookmarkX, ImageOff, Pointer } from "lucide-react"
 import ImageLoad from "./ImageLoad";
 
-function MovieCard({ details }) {
+function MovieCard({ details, onSave, isSaved }) {
 
 
     return (
@@ -26,13 +26,16 @@ function MovieCard({ details }) {
                     <Pointer className="transition-all mt-2 duration-800 ease opacity-0 group-hover:opacity-100 ml-1" color="#fff" strokeWidth={1.6} size={16} />
                 </NavLink>
                 <p className="text-[#797979] font-[500] text-[14px] mt-5"><span className="hidden sm:inline xl:inline">Realized:</span> {details.release_date}</p>
-
-
             </div>
 
-            <div className="absolute bottom-4 right-4">
-                <button className="border border-overlay-overlay transition-colors duration-400 ease hover:bg-overlay-overlay p-4 rounded-2xl cursor-pointer active:scale-[0.96]">
-                    <Star color="#999999" strokeWidth={2.25} size={20} />
+            <div className="absolute bottom-4 right-4 sm:group-hover:opacity-100 sm:opacity-0 transition-all duration-400 ease">
+                <button
+                    onClick={() => onSave(details)}
+                    className={`border border-overlay-overlay transition-colors duration-400 ease hover:bg-overlay-overlay p-4 rounded-2xl cursor-pointer active:scale-[0.96]
+                        ${isSaved ? "bg-overlay-overlay" : "bg-overlay-dark"}
+                        `}
+                >
+                    {isSaved ? <BookmarkX color="#999999" strokeWidth={2.25} size={20} /> : <Bookmark color="#999999" strokeWidth={2.25} size={20} />}
                 </button>
             </div>
         </div>

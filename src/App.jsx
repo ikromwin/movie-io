@@ -20,8 +20,8 @@ import SearchResults from './pages/SearchResults';
 
 // COMPONENTS
 import Header from './components/Header'
-import StarPage from './pages/StarPage';
 import MovieDetails from './pages/MovieDetails';
+import Bookmark from './pages/Bookmark';
 
 
 
@@ -59,7 +59,7 @@ function App() {
 
 
 
-      {(location.pathname == "/") || (location.pathname == "/star") || (location.pathname == "/search") ?
+      {(location.pathname == "/") || (location.pathname == "/bookmark") || (location.pathname == "/search") ?
 
 
 
@@ -88,7 +88,7 @@ function App() {
                 <AnimatePresence mode="wait">
                   <Routes>
                     <Route index element={<HomePage />} />
-                    <Route path='/star' element={<StarPage />} />
+                    <Route path='/bookmark' element={<Bookmark />} />
                     <Route path='/search' element={<SearchResults query={searchQuery} />} />
                   </Routes>
                 </AnimatePresence>

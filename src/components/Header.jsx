@@ -2,16 +2,20 @@ import { useEffect, useState } from "react";
 
 
 // THIRD PARTY
-import { Search, Star, Undo2 } from "lucide-react";
+import { Bookmark, Search, Undo2 } from "lucide-react";
 import { useLocation, NavLink, useNavigate } from "react-router-dom";
 
 // COMPONENTS
 
 
+// HOOKS
+import { useSavedMovies } from "../hooks/useSavedMovies";
+
 
 function Header() {
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
+    const { count } = useSavedMovies();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,9 +28,8 @@ function Header() {
     const location = useLocation()
 
     useEffect(() => {
-        if (location.pathname == "/star") setBackButton(true)
+        if (location.pathname == "/bookmark") setBackButton(true)
         else if (location.pathname == "/search") setBackButton(true)
-
         else setBackButton(false)
     })
 
@@ -55,12 +58,16 @@ function Header() {
                 </button>
             </form>
 
-            <NavLink to={"/star"} className={({ isActive }) => isActive ? "bg-overlay-overlay cursor-default flex gap-2 font-[500] items-center content-center p-4 bg-overlay-dark rounded-full" : "flex gap-2 font-[500] items-center content-center p-4  bg-overlay-dark rounded-full cursor-pointer active:scale-[0.96] hover:bg-overlay-overlay hover:transition-colors"}>
-                <Star color="#ccc" strokeWidth={2.25} size={16} />
+            <NavLink to={"/bookmark"} className={({ isActive }) => isActive ? "bg-overlay-overlay cursor-default flex gap-2 font-[500] items-center content-center p-4 bg-overlay-dark rounded-full" : "flex gap-2 font-[500] items-center content-center p-4  bg-overlay-dark rounded-full cursor-pointer active:scale-[0.96] hover:bg-overlay-overlay hover:transition-colors"}>
+                <Bookmark color="#ccc" strokeWidth={2.25} size={16} />
 
-                <p className="text-[16px] font-bold leading-3 bg-gradient-to-r from-[#FFD014] to-[#D84040] text-transparent bg-clip-text">
-                    10
-                </p>
+                {count ?
+                    <p className="text-[16px] font-bold leading-3 bg-gradient-to-r from-[#FFD014] to-[#D84040] text-transparent bg-clip-text">
+                        {count}
+                    </p>
+                    :
+                    null
+                }
             </NavLink>
 
         </div >
