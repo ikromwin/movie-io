@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className='relative h-screen w-full'>
-
+      
 
       {/* <div className="fixed h-screen w-screen loading bg-main z-5 p-4">
         <div className='relative bg-[#222] h-full rounded-2xl flex items-center justify-center'>
@@ -60,7 +60,7 @@ function App() {
 
 
       {(location.pathname == "/") || (location.pathname == "/bookmark") || (location.pathname == "/search") ?
-
+      
 
 
         <div className='relative max-w-[500px] m-auto pt-38 px-2'>
